@@ -1,5 +1,9 @@
 <?php
 
+
+use App\Http\Controllers\Api\BookController;
+use App\Models\Book;
+use GuzzleHttp\Psr7\Uri;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,3 +21,13 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+Route::get('/book', [BookController::class, 'list']);
+
+
+Route::get('/book/{id}', [BookController::class, 'show']);
+
+Route::put('/book/{id}', [BookController::class, 'update']);
+
+Route::delete('/book/{id}', [BookController::class, 'destroy']);
